@@ -44,3 +44,38 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+
+
+/*------------------------New Home Screen-------------------*/
+
+
+class HomeScreen extends StatefulWidget{
+  const HomeScreen({super.key});
+
+  @override
+  State<StatefulWidget> createState() => _HomeScreen();
+
+}
+
+class _HomeScreen extends State<HomeScreen>{
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        const Text("Welcome"),
+        const Text("BMI Calculator"),
+        const Row(
+          children: <Widget>[],
+        ),
+        const Row(),
+        ElevatedButton(
+            onPressed: <Widget>(){
+
+            },
+            child: const Text("Let's Check")),
+
+      ],
+    );
+  }
+
+}
