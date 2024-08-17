@@ -17,9 +17,8 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const Mobile(
-          child:  MyHomePage(title: "Flutter demo Home page")
-      )
+      home: const  MyHomePage(title: "Flutter demo Home page")
+
     );
   }
 }
@@ -37,7 +36,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _incrementCounter() {
     setState(() {
-      _counter++;
+      _counter=_counter + 2;
     });
   }
 
