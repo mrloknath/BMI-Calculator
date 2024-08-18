@@ -64,15 +64,33 @@ class _HomeScreen extends State<HomeScreen>{
       children: <Widget>[
         const Text("Welcome"),
         const Text("BMI Calculator"),
-        const Row(
-          children: <Widget>[],
+        Row(
+          children: <Widget>[
+            ElevatedButton.icon(
+                onPressed: (){
+
+                },
+                icon: const Icon(Icons.male),
+                label: const Text("MALE")),
+            ElevatedButton.icon(
+                onPressed: (){
+
+                },
+                icon: const Icon(Icons.female),
+                label: const Text("FEMALE"))
+          ],
         ),
-        const Row(),
-        ElevatedButton(
+        const Row(
+          children: <Widget>[
+            
+          ],
+        ),
+        ElevatedButton.icon(
             onPressed: <Widget>(){
 
             },
-            child: const Text("Let's Check")),
+            icon: const Icon(Icons.verified),
+            label: const Text("Let's Check")),
 
       ],
     );
