@@ -8,9 +8,9 @@ class BMIResult extends StatelessWidget{
   Widget build(BuildContext context) {
    return  Scaffold(
      appBar: AppBar(
-       title: TextButton.icon(
-           onPressed: (){ Navigator.pop(context);},
-           label: const Text("Back")),
+       title: TextButton(
+           onPressed: (){ Navigator.pop(context);}, child: const Text("Back"),
+           ),
      ),
      body: Center(
        child: Text("Result: $bmi"),
