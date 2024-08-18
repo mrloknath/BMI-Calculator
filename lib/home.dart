@@ -1,5 +1,7 @@
+import 'package:bmi_calculte/result.dart';
 import 'package:flutter/material.dart';
 
+/*-----------------------Default Code---------------------*/
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
   final String title;
@@ -87,10 +89,12 @@ class _HomeScreen extends State<HomeScreen>{
         ),
         ElevatedButton.icon(
             onPressed: <Widget>(){
-
+              Navigator.push(context,
+                MaterialPageRoute(builder: (context) => BMIResult(bmi: 20.1))
+              );
             },
             icon: const Icon(Icons.verified),
-            label: const Text("Let's Check")),
+            label: const Text("Let's Check B.M.I.")),
 
       ],
     );

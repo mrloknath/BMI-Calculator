@@ -6,8 +6,15 @@ class BMIResult extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-   return const Center(
-     child: Text("Result"),
+   return  Scaffold(
+     appBar: AppBar(
+       title: TextButton.icon(
+           onPressed: (){ Navigator.pop(context);},
+           label: const Text("Back")),
+     ),
+     body: Center(
+       child: Text("Result: $bmi"),
+     ),
    );
   }
 }
