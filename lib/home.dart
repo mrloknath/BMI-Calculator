@@ -64,10 +64,12 @@ class _HomeScreen extends State<HomeScreen>{
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: <Widget>[
         const Text("Welcome"),
         const Text("BMI Calculator"),
         Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
             ElevatedButton.icon(
                 onPressed: (){
