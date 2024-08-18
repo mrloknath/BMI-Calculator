@@ -17,7 +17,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Timer(const Duration(seconds: 2), (){
       Navigator.pushReplacement(context,
           MaterialPageRoute(
-              builder:(context) => const MyHomePage(title: "Flutter demo Home page")));
+              builder:(context) => const HomeScreen()));
     });
   }
 
