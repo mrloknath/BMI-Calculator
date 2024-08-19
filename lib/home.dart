@@ -88,12 +88,32 @@ class _HomeScreen extends State<HomeScreen>{
                     label: const Text("FEMALE"))
               ],
             ),
-            const SizedBox(
+            SizedBox(
               width: double.infinity,
               height: 450,
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-
+                  Container(
+                    height: double.maxFinite,
+                    width: 150,
+                    color: Colors.orangeAccent,
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Container(
+                        height: 200,
+                        width: 150,
+                        color: Colors.orangeAccent,
+                      ),
+                      Container(
+                        height: 200,
+                        width: 150,
+                        color: Colors.orangeAccent,
+                      )
+                    ],
+                  )
                 ],
               ),
             ),
