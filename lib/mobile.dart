@@ -14,10 +14,12 @@ class Mobile extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
+
+    const double fixedWidth = 350;
+    const double fixedHeight = 700;
+
     return LayoutBuilder(
       builder:(context, constraints) {
-        const double fixedWidth = 400;
-        const double fixedHeight = 700;
 
         return Center(
           child: SizedBox(

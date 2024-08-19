@@ -48,11 +48,16 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 
 
+
+
+
+
 /*------------------------New Home Screen-------------------*/
 
 
 class HomeScreen extends StatefulWidget{
   const HomeScreen({super.key});
+
 
   @override
   State<StatefulWidget> createState() => _HomeScreen();
@@ -61,14 +66,24 @@ class HomeScreen extends StatefulWidget{
 class _HomeScreen extends State<HomeScreen>{
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       body: Container(
         color: Colors.white,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
-            const Text("Welcome"),
-            const Text("BMI Calculator"),
+            const Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text("Welcome"),
+                Text("BMI Calculator"),
+              ],
+            ),
+
+
+
+
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
@@ -86,49 +101,31 @@ class _HomeScreen extends State<HomeScreen>{
                     label: const Text("FEMALE"))
               ],
             ),
+
+
+
+
             SizedBox(
               width: double.infinity,
               height: 450,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  Container(
-                    height: double.maxFinite,
-                    width: 150,
-                    //color: Colors.orangeAccent,
-                    decoration:  BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: Colors.orangeAccent,
-                    ),
-                  ),
+                  Height(height: 150, min: 0, max: 300),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      Container(
-                        height: 200,
-                        width: 150,
-                        //color: Colors.orangeAccent,
-                        decoration:  BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: Colors.orangeAccent,
-                        ),
-                        child: AgeWeight(string: "Weight (KG) ", amount: 40),
-                      ),
-                      Container(
-                        height: 200,
-                        width: 150,
-                        //color: Colors.orangeAccent,
-                        decoration:  BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: Colors.orangeAccent,
-                        ),
-                        child: AgeWeight(string: "Age", amount: 25),
-                      )
+                      AgeWeight(string: "WEIGHT (KG) ", amount: 100, min: 0,max: 200,),
+                      AgeWeight(string: "AGE (Year)", amount: 50,min: 0,max: 100,)
                     ],
                   )
                 ],
               ),
             ),
+
+
+
+
             ElevatedButton.icon(
                 onPressed: <Widget>(){
                   Navigator.push(context,
@@ -137,9 +134,22 @@ class _HomeScreen extends State<HomeScreen>{
                 },
                 icon: const Icon(Icons.verified),
                 label: const Text("Let's Check B.M.I.")),
-
           ],
         ),
+      ),
+
+
+
+
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.of(context).pushReplacement(
+            MaterialPageRoute(builder: (context) => const HomeScreen()),
+          );
+        },
+        tooltip: 'Reset',
+        mini: true,
+        child: const Icon(Icons.refresh),
       ),
     );
   }
@@ -148,41 +158,131 @@ class _HomeScreen extends State<HomeScreen>{
 
 
 
+
+class Height extends StatefulWidget{
+  Height({super.key,required this.height,required this.min,required this.max});
+  int height ,min,max;
+
+  @override
+  State<StatefulWidget> createState() => _Height();
+
+}
+
+class _Height  extends State<Height>{
+
+  void increment(){ setState(() {widget.height=(widget.height>=widget.max)?widget.max:widget.height+1;});}
+  void decrement(){setState(() {widget.height=(widget.height<=widget.min)?widget.min:widget.height-1;});}
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: double.maxFinite,
+      width: 150,
+      //color: Colors.orangeAccent,
+      decoration:  BoxDecoration( borderRadius: BorderRadius.circular(20), color: Colors.orangeAccent,),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          const Text("HEIGHT (CM)"),
+          Text("${widget.height}"),
+
+          SizedBox(
+            height: 300,
+            child: RotatedBox(
+              quarterTurns: 3,
+              child: Slider(
+                  activeColor: Colors.green,
+                  inactiveColor: Colors.green.shade100,
+
+                  value:widget.height as double,
+                  min: widget.min as double,
+                  max:widget.max as double,
+                  divisions: 300,
+
+                  onChanged: (newValue){
+                    setState(() {
+                      widget.height=newValue.toInt();});
+                  }),
+            ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              TextButton(
+                  onPressed: (){ decrement();},
+                  style: TextButton.styleFrom( backgroundColor: Colors.green.shade100,),
+                  child: const Icon(Icons.remove,color: Colors.green,)
+              ),
+              TextButton(
+                onPressed: (){ increment();},
+                style: TextButton.styleFrom( backgroundColor: Colors.green.shade100,),
+                child: const Icon(Icons.add,color: Colors.green,),)],),
+        ],
+      ),
+    );
+  }
+}
+
+
+
+
 /*---------------------Custom widget for Age & Weight----------------------*/
 class AgeWeight extends StatefulWidget{
-  AgeWeight({super.key, required this.string, required this.amount});
+  AgeWeight({super.key, required this.string, required this.amount, required this.min,required this.max});
   String string;
-  double amount;
+  int amount,min,max;
+
   @override
   State<StatefulWidget> createState() => _AgeWeight();
 }
+
 class _AgeWeight  extends State<AgeWeight>{
-  void increment(){ setState(() {widget.amount++;});}
-  void decrement(){setState(() { widget.amount--;});}
+
+  void increment(){ setState(() {widget.amount=(widget.amount>=widget.max)?widget.max:widget.amount+1;});}
+  void decrement(){setState(() { widget.amount=(widget.amount<=widget.min)?widget.min:widget.amount-1;});}
+
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: <Widget>[
-        Text(widget.string),
-        Text("${widget.amount}"),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            TextButton(
-                onPressed: (){ increment();},
-                style: TextButton.styleFrom( backgroundColor: Colors.white,),
-                child: const Icon(Icons.add)
-            ),
-            TextButton(
-                onPressed: (){ decrement();},
-                style: TextButton.styleFrom( backgroundColor: Colors.white,),
-                child: const Icon(Icons.remove))
-          ],
-        )
-      ],
+    return Container(
+      height: 200,
+      width: 150,
+      //color: Colors.orangeAccent,
+      decoration:  BoxDecoration(borderRadius: BorderRadius.circular(20), color: Colors.orangeAccent,),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: <Widget>[
+          Text(widget.string),
+          Text("${widget.amount}"),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              TextButton(
+                  onPressed: (){ decrement();},
+                  style: TextButton.styleFrom( backgroundColor: Colors.white,),
+                  child: const Icon(Icons.remove)
+              ),
+              TextButton(
+                  onPressed: (){ increment();},
+                  style: TextButton.styleFrom( backgroundColor: Colors.white,),
+                  child: const Icon(Icons.add),)],),
+          Slider(
+              label: "${widget.amount}",
+              activeColor: Colors.green,
+              inactiveColor: Colors.green.shade100,
+
+              value: widget.amount as double,
+              min: widget.min as double ,
+              max: widget.max as double,
+              divisions: 100,
+
+              onChanged: (newValue ){
+                setState(() {
+                  widget.amount= newValue.toInt();
+                });
+              })
+        ],
+      ),
     );
   }
-
 }
 
