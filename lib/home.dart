@@ -58,8 +58,6 @@ class HomeScreen extends StatefulWidget{
   State<StatefulWidget> createState() => _HomeScreen();
 
 }
-
-
 class _HomeScreen extends State<HomeScreen>{
   @override
   Widget build(BuildContext context) {
@@ -106,11 +104,13 @@ class _HomeScreen extends State<HomeScreen>{
                         height: 200,
                         width: 150,
                         color: Colors.orangeAccent,
+                        child: AgeWeight(string: "Weight (KG) ", amount: 40),
                       ),
                       Container(
                         height: 200,
                         width: 150,
                         color: Colors.orangeAccent,
+                        child: AgeWeight(string: "Age", amount: 25),
                       )
                     ],
                   )
@@ -133,3 +133,39 @@ class _HomeScreen extends State<HomeScreen>{
   }
 
 }
+
+
+
+/*---------------------Custom widget for Age & Weight----------------------*/
+class AgeWeight extends StatefulWidget{
+  AgeWeight({super.key, required this.string, required this.amount});
+  String string;
+  double amount;
+  @override
+  State<StatefulWidget> createState() => _AgeWeight();
+}
+class _AgeWeight  extends State<AgeWeight>{
+  void increment(){ setState(() {widget.amount++;});}
+  void decrement(){setState(() { widget.amount--;});}
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        Text(widget.string),
+        Text("${widget.amount}"),
+        Row(
+          children: [
+            TextButton(
+                onPressed: (){ increment();},
+                child: const Icon(Icons.add)),
+            TextButton(
+                onPressed: (){ decrement();},
+                child: const Icon(Icons.remove)),
+          ],
+        )
+      ],
+    );
+  }
+
+}
+
