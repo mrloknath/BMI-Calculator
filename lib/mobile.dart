@@ -6,7 +6,7 @@
             );
  */
 
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class Mobile extends StatelessWidget{
   final Widget child;
