@@ -150,10 +150,12 @@ class _AgeWeight  extends State<AgeWeight>{
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: <Widget>[
         Text(widget.string),
         Text("${widget.amount}"),
         Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             TextButton(
                 onPressed: (){ increment();},
