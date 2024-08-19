@@ -95,7 +95,11 @@ class _HomeScreen extends State<HomeScreen>{
                   Container(
                     height: double.maxFinite,
                     width: 150,
-                    color: Colors.orangeAccent,
+                    //color: Colors.orangeAccent,
+                    decoration:  BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Colors.orangeAccent,
+                    ),
                   ),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -103,13 +107,21 @@ class _HomeScreen extends State<HomeScreen>{
                       Container(
                         height: 200,
                         width: 150,
-                        color: Colors.orangeAccent,
+                        //color: Colors.orangeAccent,
+                        decoration:  BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: Colors.orangeAccent,
+                        ),
                         child: AgeWeight(string: "Weight (KG) ", amount: 40),
                       ),
                       Container(
                         height: 200,
                         width: 150,
-                        color: Colors.orangeAccent,
+                        //color: Colors.orangeAccent,
+                        decoration:  BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: Colors.orangeAccent,
+                        ),
                         child: AgeWeight(string: "Age", amount: 25),
                       )
                     ],
@@ -150,19 +162,22 @@ class _AgeWeight  extends State<AgeWeight>{
   @override
   Widget build(BuildContext context) {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: <Widget>[
         Text(widget.string),
         Text("${widget.amount}"),
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             TextButton(
                 onPressed: (){ increment();},
-                child: const Icon(Icons.add)),
+                style: TextButton.styleFrom( backgroundColor: Colors.white,),
+                child: const Icon(Icons.add)
+            ),
             TextButton(
                 onPressed: (){ decrement();},
-                child: const Icon(Icons.remove)),
+                style: TextButton.styleFrom( backgroundColor: Colors.white,),
+                child: const Icon(Icons.remove))
           ],
         )
       ],
