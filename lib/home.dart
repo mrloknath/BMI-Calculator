@@ -63,43 +63,52 @@ class HomeScreen extends StatefulWidget{
 class _HomeScreen extends State<HomeScreen>{
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: <Widget>[
-        const Text("Welcome"),
-        const Text("BMI Calculator"),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    return Scaffold(
+      body: Container(
+        color: Colors.white,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
-            ElevatedButton.icon(
-                onPressed: (){
+            const Text("Welcome"),
+            const Text("BMI Calculator"),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                ElevatedButton.icon(
+                    onPressed: (){
 
-                },
-                icon: const Icon(Icons.male),
-                label: const Text("MALE")),
-            ElevatedButton.icon(
-                onPressed: (){
+                    },
+                    icon: const Icon(Icons.male),
+                    label: const Text("MALE")),
+                ElevatedButton.icon(
+                    onPressed: (){
 
+                    },
+                    icon: const Icon(Icons.female),
+                    label: const Text("FEMALE"))
+              ],
+            ),
+            const SizedBox(
+              width: double.infinity,
+              height: 450,
+              child: Row(
+                children: <Widget>[
+
+                ],
+              ),
+            ),
+            ElevatedButton.icon(
+                onPressed: <Widget>(){
+                  Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => BMIResult(bmi: 20.1))
+                  );
                 },
-                icon: const Icon(Icons.female),
-                label: const Text("FEMALE"))
+                icon: const Icon(Icons.verified),
+                label: const Text("Let's Check B.M.I.")),
+
           ],
         ),
-        const Row(
-          children: <Widget>[
-            
-          ],
-        ),
-        ElevatedButton.icon(
-            onPressed: <Widget>(){
-              Navigator.push(context,
-                MaterialPageRoute(builder: (context) => BMIResult(bmi: 20.1))
-              );
-            },
-            icon: const Icon(Icons.verified),
-            label: const Text("Let's Check B.M.I.")),
-
-      ],
+      ),
     );
   }
 
