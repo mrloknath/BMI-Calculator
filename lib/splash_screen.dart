@@ -5,6 +5,7 @@ import 'home.dart';
 class SplashScreen extends StatefulWidget{
   const SplashScreen({super.key});
 
+
   @override
   State<SplashScreen> createState() => _SplashScreenState();
 }
@@ -27,9 +28,9 @@ class _SplashScreenState extends State<SplashScreen> {
      body: Container(
        width: double.infinity,
        height: double.infinity,
-       color: Colors.white,
+       color: Colors.green.shade100,
        child:  Center(
-           child: Image.asset('assets/images/splashscreen.jpg'),
+           child: Image.asset('assets/images/splashscreen.png'),
        ),
      ),
    );
