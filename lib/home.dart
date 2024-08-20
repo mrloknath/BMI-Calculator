@@ -56,7 +56,8 @@ class _MyHomePageState extends State<MyHomePage> {
 int h=0; //h=height
 int w=0; //w=weight
 int a=0; // a=age
-
+const Color iconText=Colors.green;
+const Color buttonBackColor=Colors.lightGreen;
 
 double bmiCalculate(int height,int weight){
   double hM=height.toDouble()/100; // height in meter
@@ -89,6 +90,7 @@ class HomeScreen extends StatefulWidget{
 class _HomeScreen extends State<HomeScreen>{
   int height=0,weight=0,age=0;
   Color m=Colors.white,f=Colors.white;
+  bool hm=false,hf=false,hover=false;
 
   @override
   Widget build(BuildContext context) {
@@ -115,23 +117,33 @@ class _HomeScreen extends State<HomeScreen>{
                 ElevatedButton.icon(
                     onPressed: (){
                       setState(() {
-                        m=Colors.lightGreen;
+                        m=iconText;
                         f=Colors.white;
                       });
                     },
-                    style: ElevatedButton.styleFrom(backgroundColor:m ),
-                    icon: const Icon(Icons.male),
-                    label: const Text("MALE")),
+                    onHover: (hovering){
+                      setState(() {
+                       hm=hovering;
+                      });
+                    },
+                    style: ElevatedButton.styleFrom(backgroundColor: (hm)?buttonBackColor:m, ),
+                    icon: const Icon(Icons.male,color: iconText,),
+                    label: const Text("MALE",style: TextStyle(color: iconText))),
                 ElevatedButton.icon(
                     onPressed: (){
                       setState(() {
-                        f=Colors.lightGreen;
+                        f=iconText;
                         m=Colors.white;
                       });
                     },
-                    style: ElevatedButton.styleFrom(backgroundColor:f ),
-                    icon: const Icon(Icons.female),
-                    label: const Text("FEMALE"))
+                    onHover: (hovering){
+                      setState(() {
+                        hf=hovering;
+                      });
+                    },
+                    style: ElevatedButton.styleFrom(backgroundColor:(hf)?buttonBackColor:f, ),
+                    icon: const Icon(Icons.female,color: iconText,),
+                    label: const Text("FEMALE",style: TextStyle(color: iconText),))
               ],
             ),
 
@@ -148,8 +160,8 @@ class _HomeScreen extends State<HomeScreen>{
                   Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      Weight(string: "WEIGHT (KG) ", amount: 100, min: 0,max: 200,),
-                      Age(string: "AGE (Year)", amount: 50,min: 0,max: 100,)
+                      Weight(string: "WEIGHT", amount: 100, min: 0,max: 200,),
+                      Age(string: "AGE", amount: 50,min: 0,max: 100,)
                     ],
                   )
                 ],
@@ -165,8 +177,14 @@ class _HomeScreen extends State<HomeScreen>{
                     MaterialPageRoute(builder: (context) => BMIResult(bmi: bmiCalculate(h,w)))
                   );
                 },
-                icon: const Icon(Icons.verified),
-                label: const Text("Let's Check B.M.I.")),
+                onHover: (hovering){
+                  setState(() {
+                    hover=hovering;
+                  });
+                },
+                style: ElevatedButton.styleFrom(backgroundColor: (hover)?buttonBackColor:Colors.white,),
+                icon: const Icon(Icons.verified,color: iconText,),
+                label: const Text("Let's Check B.M.I.",style: TextStyle(color: iconText))),
           ],
         ),
       ),
@@ -180,14 +198,20 @@ class _HomeScreen extends State<HomeScreen>{
             MaterialPageRoute(builder: (context) => const HomeScreen()),
           );
         },
+        backgroundColor: Colors.white,
         tooltip: 'Reset',
         mini: true,
-        child: const Icon(Icons.refresh),
+        child: const Icon(Icons.refresh,color: iconText,),
       ),
     );
   }
 
 }
+
+
+
+
+
 
 
 
@@ -220,12 +244,23 @@ class _Height  extends State<Height>{
       height: double.maxFinite,
       width: 150,
       //color: Colors.orangeAccent,
-      decoration:  BoxDecoration( borderRadius: BorderRadius.circular(20), color: Colors.lightGreen,),
+      decoration:  BoxDecoration( borderRadius: BorderRadius.circular(20), color: buttonBackColor,),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          const Text("HEIGHT (CM)"),
-          Text("${widget.height}"),
+          const Text("HEIGHT",
+            style: TextStyle(
+              fontSize: 25,
+              fontWeight: FontWeight.bold,
+              color: iconText,
+            ),
+          ),
+          Text("${widget.height} cm",
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+              color:iconText,
+            ),
+          ),
 
           SizedBox(
             height: 300,
@@ -254,12 +289,12 @@ class _Height  extends State<Height>{
               TextButton(
                   onPressed: (){ decrement();},
                   style: TextButton.styleFrom( backgroundColor: Colors.white,),
-                  child: const Icon(Icons.remove,color: Colors.green,)
+                  child: const Icon(Icons.remove,color: iconText,)
               ),
               TextButton(
                 onPressed: (){ increment();},
                 style: TextButton.styleFrom( backgroundColor: Colors.white,),
-                child: const Icon(Icons.add,color: Colors.green,),)],),
+                child: const Icon(Icons.add,color: iconText,),)],),
         ],
       ),
     );
@@ -298,24 +333,35 @@ class _Weight  extends State<Weight>{
       height: 200,
       width: 150,
       //color: Colors.orangeAccent,
-      decoration:  BoxDecoration(borderRadius: BorderRadius.circular(20), color: Colors.lightGreen,),
+      decoration:  BoxDecoration(borderRadius: BorderRadius.circular(20), color: buttonBackColor,),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[
-          Text(widget.string),
-          Text("${widget.amount}"),
+          const Text("WEIGHT",
+            style: TextStyle(
+              fontSize: 25,
+              fontWeight: FontWeight.bold,
+              color: iconText,
+            ),
+          ),
+          Text("${widget.amount} KG",
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+              color:iconText,
+            ),
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               TextButton(
                   onPressed: (){ decrement();},
                   style: TextButton.styleFrom( backgroundColor: Colors.white,),
-                  child: const Icon(Icons.remove)
+                  child: const Icon(Icons.remove,color: iconText,)
               ),
               TextButton(
                   onPressed: (){ increment();},
                   style: TextButton.styleFrom( backgroundColor: Colors.white,),
-                  child: const Icon(Icons.add),)],),
+                  child: const Icon(Icons.add,color: iconText,),)],),
           Slider(
               label: "${widget.amount}",
               activeColor: Colors.green,
@@ -372,24 +418,35 @@ class _Age  extends State<Age>{
       height: 200,
       width: 150,
       //color: Colors.orangeAccent,
-      decoration:  BoxDecoration(borderRadius: BorderRadius.circular(20), color: Colors.lightGreen,),
+      decoration:  BoxDecoration(borderRadius: BorderRadius.circular(20), color: buttonBackColor,),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[
-          Text(widget.string),
-          Text("${widget.amount}"),
+          const Text("AGE",
+            style: const TextStyle(
+              fontSize: 25,
+              fontWeight: FontWeight.bold,
+              color: iconText,
+            ),
+          ),
+          Text("${widget.amount} year",
+            style: const TextStyle(
+            fontWeight: FontWeight.bold,
+            color:iconText,
+          ),
+    ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               TextButton(
                   onPressed: (){ decrement();},
                   style: TextButton.styleFrom( backgroundColor: Colors.white,),
-                  child: const Icon(Icons.remove)
+                  child: const Icon(Icons.remove,color: iconText,)
               ),
               TextButton(
                 onPressed: (){ increment();},
                 style: TextButton.styleFrom( backgroundColor: Colors.white,),
-                child: const Icon(Icons.add),)],),
+                child: const Icon(Icons.add,color: iconText,),)],),
           Slider(
               label: "${widget.amount}",
               activeColor: Colors.green,

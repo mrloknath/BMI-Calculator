@@ -15,8 +15,8 @@ class Mobile extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
 
-    const double fixedWidth = 350;
-    const double fixedHeight = 700;
+    const double fixedWidth = 500;
+    const double fixedHeight = 900;
 
     return LayoutBuilder(
       builder:(context, constraints) {
