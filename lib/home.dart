@@ -117,7 +117,7 @@ class _HomeScreen extends State<HomeScreen>{
             MaleFemale(iconText: Colors.green,buttonBackColor: Colors.lightGreen,),
 
 
-            Container(
+            SizedBox(
               //padding: EdgeInsets.all(10),
               //decoration: BoxDecoration(color: Colors.transparent.withOpacity(0.2),borderRadius: BorderRadius.circular(15)),
               width: double.infinity,
