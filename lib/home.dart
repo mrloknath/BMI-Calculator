@@ -121,7 +121,7 @@ class _HomeScreen extends State<HomeScreen>{
               //padding: EdgeInsets.all(10),
               //decoration: BoxDecoration(color: Colors.transparent.withOpacity(0.2),borderRadius: BorderRadius.circular(15)),
               width: double.infinity,
-              height: 450,
+              height: 400,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
