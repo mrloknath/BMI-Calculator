@@ -1,5 +1,4 @@
 import 'package:bmi_calculte/mobile.dart';
-import 'package:bmi_calculte/result.dart';
 import 'package:bmi_calculte/splash_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -20,7 +19,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
           useMaterial3: true,
         ),
-        home: BMIResult(bmi: 20.0) //const SplashScreen()
+        home:const SplashScreen()
       ),
     );
   }
