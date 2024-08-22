@@ -8,14 +8,16 @@ class BMIResult extends StatelessWidget{
     String data;
 
    void  getBMICategory(double bmi, String gender) {
+     // https://chatgpt.com/share/27f04f17-aa0a-4b4d-9acf-a2311fa4bd5e
+
     if (bmi < 18.5) {
-      data='Underweight';
+      data=' Your Body Mass Index (B.M.I.) is $bmi that means You are Underweight';
     } else if (bmi < 24.9) {
-      data= 'Normal weight';
+      data= ' Your Body Mass Index (B.M.I.) is $bmi that means You are Normal weight';
     } else if (bmi < 29.9) {
-      data= 'Overweight';
+      data= 'Your Body Mass Index (B.M.I.) is $bmi that means You are Overweight';
     } else {
-      data= 'Obesity';
+      data= 'Your Body Mass Index (B.M.I.) is $bmi that means You are Obesity';
     }
   }
 
