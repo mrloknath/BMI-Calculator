@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class BMIResult extends StatelessWidget{
-  BMIResult({super.key, required this.bmi});
-   double bmi=-1;
+  const BMIResult({super.key, required this.bmi});
+   final double bmi;
 
 
   @override
@@ -10,11 +10,19 @@ class BMIResult extends StatelessWidget{
    return  Scaffold(
      appBar: AppBar(
        title: TextButton(
-           onPressed: (){ Navigator.pop(context);}, child: const Text("Back"),
-           ),
+           onPressed: (){ Navigator.pop(context);}, child: const Text("Back"),),
      ),
      body: Center(
-       child: Text("Result: $bmi"),
+       child: Column(
+         children: [
+           Container(
+             //color: Colors.lightGreen,
+             padding: EdgeInsets.all(150),
+             decoration: BoxDecoration(shape: BoxShape.circle,border: Border.all(width: 25,color: Colors.red),),
+             child:  Text("Result: $bmi",)),
+
+         ],
+       ),
      ),
    );
   }

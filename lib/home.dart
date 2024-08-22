@@ -114,14 +114,14 @@ class _HomeScreen extends State<HomeScreen>{
             ),
 
 
-            MaleFemale(iconText: Colors.green,buttonBackColor: Colors.lightGreen,),
+            const MaleFemale(iconText: Colors.green,buttonBackColor: Colors.lightGreen,),
 
 
             SizedBox(
               //padding: EdgeInsets.all(10),
               //decoration: BoxDecoration(color: Colors.transparent.withOpacity(0.2),borderRadius: BorderRadius.circular(15)),
               width: double.infinity,
-              height: 400,
+              height: 500,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
@@ -187,9 +187,9 @@ class _HomeScreen extends State<HomeScreen>{
 
 /*--------------------------------Male Female------------------*/
 class MaleFemale extends StatefulWidget{
-  MaleFemale({super.key,required this.iconText,required this.buttonBackColor});
-  Color iconText;
-  Color buttonBackColor;
+  const MaleFemale({super.key,required this.iconText,required this.buttonBackColor});
+  final Color iconText;
+  final Color buttonBackColor;
   @override
   State<StatefulWidget> createState() => _MaleFemale();
 
@@ -241,7 +241,8 @@ class _MaleFemale  extends State<MaleFemale>{
 /*------------------------------------Height----------------------------------*/
 class Height extends StatefulWidget{
   Height({super.key,required this.height,required this.min,required this.max});
-  int height ,min,max;
+  final int  min,max;
+  int height;
 
   @override
   State<StatefulWidget> createState() => _Height();
@@ -333,8 +334,9 @@ class _Height  extends State<Height>{
 /*------------------------------------Weight----------------------------------*/
 class Weight extends StatefulWidget{
   Weight({super.key, required this.string, required this.amount, required this.min,required this.max});
-  String string;
-  int amount,min,max;
+  final String string;
+  final int min,max;
+  int amount;
 
   @override
   State<StatefulWidget> createState() => _Weight();
@@ -419,8 +421,9 @@ class _Weight  extends State<Weight>{
 /*------------------------------------Age----------------------------------*/
 class Age extends StatefulWidget{
   Age({super.key, required this.string, required this.amount, required this.min,required this.max});
-  String string;
-  int amount,min,max;
+  final String string;
+  final int min,max;
+  int amount;
 
   @override
   State<StatefulWidget> createState() => _Age();
