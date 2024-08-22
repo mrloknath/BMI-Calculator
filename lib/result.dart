@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
-String data="";
+
 
 class BMIResult extends StatelessWidget{
-  const BMIResult({super.key, required this.bmi});
+  BMIResult({super.key, required this.bmi, required this.data});
    final double bmi;
-  void  getBMICategory(double bmi, String gender) {
+    String data;
+
+   void  getBMICategory(double bmi, String gender) {
     if (bmi < 18.5) {
       data='Underweight';
     } else if (bmi < 24.9) {
@@ -19,6 +21,7 @@ class BMIResult extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
+    getBMICategory(bmi, data);
    return  Scaffold(
      appBar: AppBar(
        title: TextButton(
@@ -32,7 +35,7 @@ class BMIResult extends StatelessWidget{
              padding: const EdgeInsets.all(150),
              decoration: BoxDecoration(shape: BoxShape.circle,border: Border.all(width: 25,color: Colors.red),),
              child:  Text(" $bmi",style: const TextStyle(fontSize: 25,color: Colors.lightGreen),)),
-           Text(data!),
+           Text(data),
            TextButton(onPressed: (){ Navigator.pop(context);}, child: const Text("Recheck BMI"))
          ],
        ),

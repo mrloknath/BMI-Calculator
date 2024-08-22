@@ -136,7 +136,7 @@ class _HomeScreen extends State<HomeScreen>{
               child: ElevatedButton.icon(
                   onPressed: <Widget>(){
                     Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => BMIResult(bmi: bmiCalculate(h,w)))
+                      MaterialPageRoute(builder: (context) => BMIResult(bmi: bmiCalculate(h,w), data: 'Gender : ',))
                     );
                   },
 
