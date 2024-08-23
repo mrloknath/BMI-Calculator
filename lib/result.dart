@@ -43,9 +43,12 @@ class BMIResult extends StatelessWidget{
                padding: const EdgeInsets.all(50),
                decoration: BoxDecoration(shape: BoxShape.circle,border: Border.all(width: 25,color: Colors.red),),
                child:  Text("  ${bmi.toStringAsFixed(2)} ",style: const TextStyle(fontSize: 100,color: Colors.white),)),
-         
-         
-         
+
+
+
+
+
+
          
              Opacity(
                opacity: 0.8,
@@ -55,6 +58,10 @@ class BMIResult extends StatelessWidget{
                    decoration: BoxDecoration(color: Colors.lightGreen,borderRadius: BorderRadius.circular(20)),
                    child: Text(data,style: TextStyle(color: Colors.white,fontSize: 15,fontWeight: FontWeight.bold),)),
              ),
+
+
+
+
 
 
              Container(
