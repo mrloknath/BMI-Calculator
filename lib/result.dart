@@ -56,8 +56,7 @@ class BMIResult extends StatelessWidget{
                    child: Text(data,style: TextStyle(color: Colors.white,fontSize: 15,fontWeight: FontWeight.bold),)),
              ),
          
-         
-         
+
              Container(
                width: double.infinity,
                  height: 50,
