@@ -55,8 +55,6 @@ class BMIResult extends StatelessWidget{
                    decoration: BoxDecoration(color: Colors.lightGreen,borderRadius: BorderRadius.circular(20)),
                    child: Text(data,style: TextStyle(color: Colors.white,fontSize: 15,fontWeight: FontWeight.bold),)),
              ),
-         
-
 
 
              Container(
