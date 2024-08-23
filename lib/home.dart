@@ -122,6 +122,7 @@ class _HomeScreen extends State<HomeScreen>{
 }
 
 
+
 /*--------------------------------Male Female------------------*/
 class MaleFemale extends StatefulWidget{
   const MaleFemale({super.key,required this.iconText,required this.buttonBackColor});

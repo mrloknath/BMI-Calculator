@@ -9,8 +9,6 @@ class BMIResult extends StatelessWidget{
     String data;
 
 
-
-
    void  getBMICategory(double bmi, String gender) {
      // https://chatgpt.com/share/27f04f17-aa0a-4b4d-9acf-a2311fa4bd5e
 
