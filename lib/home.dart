@@ -78,6 +78,7 @@ class _HomeScreen extends State<HomeScreen>{
 
             Container(
               width: double.infinity,
+              height: 50,
 
               margin: const EdgeInsets.only(left:10 ,right: 60),
              // decoration: BoxDecoration(color: Colors.transparent.withOpacity(0.2),borderRadius: BorderRadius.circular(15)),
@@ -95,7 +96,7 @@ class _HomeScreen extends State<HomeScreen>{
 
                   ),
                   icon: Icon(Icons.verified,color: iconText,),
-                  label: Text("Let's Check B.M.I.",style: TextStyle(color: iconText))),
+                  label: Text("Check B.M.I.",style: TextStyle(fontSize:30,color: iconText,))),
             ),
           ],
         ),
