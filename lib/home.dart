@@ -1,8 +1,8 @@
 import 'package:bmi_calculte/result.dart';
 import 'package:flutter/material.dart';
 
-int h=0; //h=height
-int w=0; //w=weight
+int h=180; //h=height
+int w=65; //w=weight
 int a=0; // a=age
 
 double bmiCalculate(int height,int weight){
@@ -41,23 +41,31 @@ class _HomeScreen extends State<HomeScreen>{
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
-            const Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Text("Welcome"),
-                Text("BMI Calculator"),
-              ],
+            Container(
+              width: double.infinity,
+              margin: EdgeInsets.only(left: 50.0,right: 50.0),
+              padding: EdgeInsets.all(10),
+              decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),color: Colors.transparent.withAlpha(10)),
+              child: Column(
+                //mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text("Welcome",style: TextStyle(fontSize:15,color: iconText,)),
+                  Text("BMI Calculator",style: TextStyle(fontSize:20,color: iconText,)),
+                ],
+              ),
             ),
 
 
             const MaleFemale(iconText: Colors.green,buttonBackColor: Colors.lightGreen,),
 
 
-            SizedBox(
-              //padding: EdgeInsets.all(10),
-              //decoration: BoxDecoration(color: Colors.transparent.withOpacity(0.2),borderRadius: BorderRadius.circular(15)),
+            Container(
               width: double.infinity,
               height: 500,
+              margin: EdgeInsets.only(left: 50.0,right: 50.0),
+              padding: EdgeInsets.all(10),
+              decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),color: Colors.transparent.withAlpha(10)),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
@@ -96,7 +104,7 @@ class _HomeScreen extends State<HomeScreen>{
 
                   ),
                   icon: Icon(Icons.verified,color: iconText,),
-                  label: Text("Check B.M.I.",style: TextStyle(fontSize:30,color: iconText,))),
+                  label: Text("Check B.M.I.",style: TextStyle(fontSize:25,color: iconText,))),
             ),
           ],
         ),
@@ -139,35 +147,41 @@ class _MaleFemale  extends State<MaleFemale>{
 
   @override
   Widget build(BuildContext context) {
-   return Row(
-     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-     children: <Widget>[
-       ElevatedButton.icon(
-           onPressed: (){
-             setState(() {
-               maleIconText=Colors.white;
-               femaleIconText=widget.buttonBackColor;
-               maleButtonBackground=widget.buttonBackColor;
-               femaleButtonBackground=Colors.white;
-             });
-           },
+   return Container(
+     width: double.infinity,
+     margin: EdgeInsets.only(left: 50.0,right: 50.0),
+     padding: EdgeInsets.all(10),
+     decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),color: Colors.transparent.withAlpha(10)),
+     child: Row(
+       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+       children: <Widget>[
+         ElevatedButton.icon(
+             onPressed: (){
+               setState(() {
+                 maleIconText=Colors.white;
+                 femaleIconText=widget.buttonBackColor;
+                 maleButtonBackground=widget.buttonBackColor;
+                 femaleButtonBackground=Colors.white;
+               });
+             },
 
-           style: ElevatedButton.styleFrom(backgroundColor: maleButtonBackground, ),
-           icon: Icon(Icons.male,color: maleIconText,),
-           label: Text("MALE",style: TextStyle(color: maleIconText))),
-       ElevatedButton.icon(
-           onPressed: (){
-             setState(() {
-               femaleIconText=Colors.white;
-               maleIconText=widget.buttonBackColor;
-               femaleButtonBackground=widget.buttonBackColor;
-               maleButtonBackground=Colors.white;
-             });
-           },
-           style: ElevatedButton.styleFrom(backgroundColor:femaleButtonBackground, ),
-           icon: Icon(Icons.female,color: femaleIconText,),
-           label: Text("FEMALE",style: TextStyle(color: femaleIconText),))
-     ],
+             style: ElevatedButton.styleFrom(backgroundColor: maleButtonBackground, ),
+             icon: Icon(Icons.male,color: maleIconText,),
+             label: Text("MALE",style: TextStyle(color: maleIconText))),
+         ElevatedButton.icon(
+             onPressed: (){
+               setState(() {
+                 femaleIconText=Colors.white;
+                 maleIconText=widget.buttonBackColor;
+                 femaleButtonBackground=widget.buttonBackColor;
+                 maleButtonBackground=Colors.white;
+               });
+             },
+             style: ElevatedButton.styleFrom(backgroundColor:femaleButtonBackground, ),
+             icon: Icon(Icons.female,color: femaleIconText,),
+             label: Text("FEMALE",style: TextStyle(color: femaleIconText),))
+       ],
+     ),
    );
   }
 }
