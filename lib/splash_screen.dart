@@ -26,9 +26,7 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     Timer(const Duration(seconds: 1), _snap);
     Timer(const Duration(seconds: 3), (){
-      Navigator.pushReplacement(context,
-          MaterialPageRoute(
-              builder:(context) => const HomeScreen()));
+      Navigator.pushReplacement(context,MaterialPageRoute(builder:(context) => const HomeScreen()));
     });
   }
 
@@ -47,16 +45,12 @@ class _SplashScreenState extends State<SplashScreen> {
        width: double.infinity,
        height: double.infinity,
        child: Center(
-         child: AnimatedOpacity(
-           opacity: _isDisappearing ? 0.0 : 1.0,
+         child: AnimatedContainer(
            duration: const Duration(seconds: 2),
-           child: AnimatedContainer(
-             duration: const Duration(seconds: 2),
-             width: _isDisappearing ? 0.0 : 500.0,
-             height: _isDisappearing ? 0.0 : 500.0,
-             //color: _isDisappearing?Colors.lightGreen:Colors.lightGreen,
-             child: Image.asset('assets/images/splashscreen.png'),
-           ),
+           width: _isDisappearing ? 0.0 : 500.0,
+           height: _isDisappearing ? 0.0 : 500.0,
+           //color: _isDisappearing?Colors.lightGreen:Colors.lightGreen,
+           child: Image.asset('assets/images/splashscreen.png'),
          ),
        ),
      ),
