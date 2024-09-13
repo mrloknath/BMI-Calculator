@@ -29,7 +29,10 @@ class _HomeScreen extends State<HomeScreen>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       body: Container(
+        height: double.infinity,
+        width: double.infinity,
         decoration: const BoxDecoration(
           //color: Colors.green.shade100,
           gradient: LinearGradient(
@@ -43,7 +46,7 @@ class _HomeScreen extends State<HomeScreen>{
           children: <Widget>[
             Container(
               width: double.infinity,
-              margin: EdgeInsets.only(left: 50.0,right: 50.0),
+              margin: EdgeInsets.only(left: 10.0,right: 10.0),
               padding: EdgeInsets.all(10),
               decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),color: Colors.transparent.withAlpha(10)),
               child: Column(
@@ -62,12 +65,12 @@ class _HomeScreen extends State<HomeScreen>{
 
             Container(
               width: double.infinity,
-              height: 500,
-              margin: EdgeInsets.only(left: 50.0,right: 50.0),
+              height: 450,
+              margin: EdgeInsets.only(left: 10.0,right: 10.0),
               padding: EdgeInsets.all(10),
               decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),color: Colors.transparent.withAlpha(10)),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
                   Height(height: 150, min: 0, max: 300),
                   Column(
@@ -149,11 +152,11 @@ class _MaleFemale  extends State<MaleFemale>{
   Widget build(BuildContext context) {
    return Container(
      width: double.infinity,
-     margin: EdgeInsets.only(left: 50.0,right: 50.0),
+     margin: EdgeInsets.only(left: 10.0,right: 10.0),
      padding: EdgeInsets.all(10),
      decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),color: Colors.transparent.withAlpha(10)),
      child: Row(
-       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+       mainAxisAlignment: MainAxisAlignment.spaceAround,
        children: <Widget>[
          ElevatedButton.icon(
              onPressed: (){
@@ -218,8 +221,8 @@ class _Height  extends State<Height>{
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: double.maxFinite,
-      width: 150,
+      height: 430,
+      width: 125,
       //color: Colors.orangeAccent,
       decoration:  BoxDecoration( borderRadius: BorderRadius.circular(20), color: buttonBackColor,),
       child: Column(
@@ -241,7 +244,7 @@ class _Height  extends State<Height>{
           ),
 
           SizedBox(
-            height: 300,
+            height: 250,
             child: RotatedBox(
               quarterTurns: 3,
               child: Slider(
@@ -312,7 +315,7 @@ class _Weight  extends State<Weight>{
   Widget build(BuildContext context) {
     return Container(
       height: 200,
-      width: 150,
+      width: 125,
       //color: Colors.orangeAccent,
       decoration:  BoxDecoration(borderRadius: BorderRadius.circular(20), color: buttonBackColor,),
       child: Column(
@@ -401,7 +404,7 @@ class _Age  extends State<Age>{
   Widget build(BuildContext context) {
     return Container(
       height: 200,
-      width: 150,
+      width: 125,
       //color: Colors.orangeAccent,
       decoration:  BoxDecoration(borderRadius: BorderRadius.circular(20), color: buttonBackColor,),
       child: Column(

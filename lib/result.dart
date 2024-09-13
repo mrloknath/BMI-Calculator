@@ -39,15 +39,15 @@ class BMIResult extends StatelessWidget{
            Container(
              //color: Colors.lightGreen,
              padding: const EdgeInsets.all(75),
-             margin: EdgeInsets.all(25),
+             margin: EdgeInsets.all(10),
              decoration: BoxDecoration(shape: BoxShape.circle,border: Border.all(width: 25,color: _color),),
              child:  Text("  ${bmi.toStringAsFixed(2)} ",style: const TextStyle(fontSize: 75,color: Colors.white),)),
 
 
 
            Container(
-               padding: const EdgeInsets.all(50),
-               margin: EdgeInsets.only(left: 100,right: 100),
+               padding: const EdgeInsets.all(20),
+               margin: EdgeInsets.only(left: 50,right: 50),
                decoration: BoxDecoration(color: Colors.transparent.withAlpha(20),borderRadius: BorderRadius.circular(20)),
                child: Text(data,style: TextStyle(color: _color,fontSize: 15,fontWeight: FontWeight.bold),)),
 
