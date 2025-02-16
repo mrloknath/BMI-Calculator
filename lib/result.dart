@@ -36,12 +36,7 @@ class BMIResult extends StatelessWidget{
        child: Column(
          mainAxisAlignment: MainAxisAlignment.spaceAround,
          children: [
-           // Container(
-           //   //color: Colors.lightGreen,
-           //   padding: const EdgeInsets.all(75),
-           //   margin: EdgeInsets.all(10),
-           //   decoration: BoxDecoration(shape: BoxShape.circle,border: Border.all(width: 25,color: _color),),
-           //   child:  Text("  ${bmi.toStringAsFixed(2)} ",style: const TextStyle(fontSize: 75,color: Colors.white),)),
+
            CircleAvatar(
              backgroundColor: _color,
              minRadius: 150,
