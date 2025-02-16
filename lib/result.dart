@@ -52,19 +52,32 @@ class BMIResult extends StatelessWidget{
 
 
            Container(
-             width: double.infinity,
+
                height: 50,
-               margin: const EdgeInsets.all(10),
+               margin: const EdgeInsets.only(left: 50,right: 50),
                child: ElevatedButton.icon(
-                   onPressed: (){ Navigator.pop(context);},
+                   onPressed: (){ },
+
                    style: ElevatedButton.styleFrom(
                      backgroundColor: Colors.white,
                      elevation: 20,
                    ),
-                   icon: Icon(Icons.refresh,color: _color,size: 30,),
-                   label: Text("Recheck BMI" ,style: TextStyle(fontSize: 20,color: _color),)))
+                   icon: Icon(Icons.accessibility,color: _color,size: 30,),
+                   label: Text("Healthy Tips" ,style: TextStyle(fontSize: 20,color: _color),)))
          ],
        ),
+     ),
+
+
+
+     floatingActionButton: FloatingActionButton(
+       onPressed: () {
+
+       },
+       backgroundColor: Colors.white,
+       tooltip: "Tips to healthy",
+       mini: true,
+       child: Icon(Icons.accessibility),
      ),
    );
   }

@@ -88,11 +88,8 @@ class _HomeScreen extends State<HomeScreen>{
 
 
             Container(
-              width: double.infinity,
               height: 50,
-
-              margin: const EdgeInsets.only(left:10 ,right: 60),
-             //decoration: BoxDecoration(gradient: LinearGradient( colors: [Colors.orange, Colors.red],),),
+              margin: const EdgeInsets.only(left: 50,right: 50),
               child: ElevatedButton.icon(
                   onPressed: <Widget>(){
                     Navigator.push(context,
