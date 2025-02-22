@@ -1,5 +1,5 @@
-import 'package:bmi_calculte/mobile.dart';
-import 'package:bmi_calculte/splash_screen.dart';
+import 'package:bmi_calculte/screens/splash_screen.dart';
+import 'package:bmi_calculte/widget/mobile.dart';
 import 'package:flutter/material.dart';
 
 
@@ -20,6 +20,12 @@ class MyApp extends StatelessWidget {
         title: 'Flutter Demo',
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
+          floatingActionButtonTheme: const FloatingActionButtonThemeData(
+            shape: CircleBorder(),
+            smallSizeConstraints: BoxConstraints.tightFor(width: 40, height: 40, ),
+            backgroundColor: Colors.white, // Default FAB color
+            // foregroundColor: Colors.white,  // Default icon color
+          ),
           useMaterial3: true,
         ),
         home:const SplashScreen()
