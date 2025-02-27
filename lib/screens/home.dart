@@ -9,14 +9,6 @@ import '../widget/male_female.dart';
 import '../widget/weight.dart';
 
 
-//int h=180; //h=height
-//int w=65; //w=weight
-//int a=50; // a=age
-// String maleFemale="man";
-
-
-
-
 
 class HomeScreen extends StatefulWidget{
   const HomeScreen({super.key});
