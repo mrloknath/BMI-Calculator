@@ -5,9 +5,6 @@ import 'package:provider/provider.dart';
 class Height extends StatelessWidget{
   const Height({super.key,required this.min,required this.max});
   final int  min,max;
-  // Color iconText=Colors.green;
-  // Color buttonBackColor=Colors.lightGreen;
-  //final int height;
 
 
   @override
