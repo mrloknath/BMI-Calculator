@@ -1,12 +1,27 @@
+import 'package:bmi_calculte/provider/provider_age.dart';
+import 'package:bmi_calculte/provider/provider_height.dart';
+import 'package:bmi_calculte/provider/provider_male_female.dart';
+import 'package:bmi_calculte/provider/provider_weight.dart';
 import 'package:bmi_calculte/screens/splash_screen.dart';
 import 'package:bmi_calculte/widget/mobile.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 
 
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => ProviderMaleFemale()),
+        ChangeNotifierProvider(create: (context) => ProviderHeight()),
+        ChangeNotifierProvider(create: (context) => ProviderWeight()),
+        ChangeNotifierProvider(create: (context) => ProviderAge()),
+      ],
+      child:const MyApp()
+    )
+  );
 }
 
 class MyApp extends StatelessWidget {

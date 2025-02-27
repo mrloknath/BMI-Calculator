@@ -1,16 +1,17 @@
+import 'package:bmi_calculte/provider/provider_age.dart';
+import 'package:bmi_calculte/provider/provider_height.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../provider/provider_male_female.dart';
+import '../provider/provider_weight.dart';
 import '../widget/floating_button_fab.dart';
 
 String data='normal';
 Color _color=Colors.transparent;
 
 class BMIResult extends StatelessWidget{
-  const BMIResult({super.key, required this.bmi, required this.maleFemale,required this.height,required this.weight,required this.age});
+  const BMIResult({super.key, required this.bmi});
    final double bmi;
-   final String maleFemale;
-   final int age;
-   final int height;
-   final int weight;
 
 
 
@@ -53,26 +54,29 @@ class BMIResult extends StatelessWidget{
              child: CircleAvatar(
                backgroundColor: _color,
                minRadius: 150,
-               child: Expanded(
-                 child: Container(
-                   width: double.infinity,
-                     height: double.infinity,
-                     decoration: BoxDecoration(
-                       shape: BoxShape.circle,
-                       gradient: RadialGradient(
-                         colors: [ Colors.white,_color],
-                         center: Alignment.center, // Centered gradient
-                         radius: 0.6, // Controls spread of the gradient
-                       ),
+               child: Container(
+                 width: double.infinity,
+                   height: double.infinity,
+                   decoration: BoxDecoration(
+                     shape: BoxShape.circle,
+                     gradient: RadialGradient(
+                       colors: [ Colors.white,_color],
+                       center: Alignment.center, // Centered gradient
+                       radius: 0.6, // Controls spread of the gradient
                      ),
-                     child: Center(child: Text("  ${bmi.toStringAsFixed(2)} ",style: TextStyle(fontSize: 50,color: _color),))),
-               ),
+                   ),
+                   child: Center(child: Text("  ${bmi.toStringAsFixed(2)} ",style: TextStyle(fontSize: 50,color: _color),))),
              ),
            ),
 
            Flexible(
              flex: 4,
-               child: Image.asset("assets/$maleFemale/${maleFemale}_$data.png")),
+               child: Consumer<ProviderMaleFemale>(
+                   builder: (context,value,child){
+                   return Image.asset("assets/${context.read<ProviderMaleFemale>().maleFemale}/${context.read<ProviderMaleFemale>().maleFemale}_$data.png");
+                    }
+                    )
+           ),
 
            Flexible(
              flex: 2,
@@ -86,27 +90,12 @@ class BMIResult extends StatelessWidget{
                        end: Alignment.bottomRight,
                      ),
                      borderRadius: BorderRadius.circular(20)),
-                 child: Text("B.M.I. : ${bmi.toStringAsFixed(2)}\nAge : $age \nHeight : $height\nWeight : $weight\nHealth : $data ",
+                 child: Text("B.M.I. : ${bmi.toStringAsFixed(2)}\nAge : ${context.read<ProviderAge>().age} \nHeight : ${context.read<ProviderHeight>().height}\nWeight : ${context.read<ProviderWeight>().weight}\nHealth : $data ",
                  style: const TextStyle(color: Colors.white,fontSize: 15,fontWeight: FontWeight.bold),
                  textAlign: TextAlign.center,
                  )),
            ),
 
-
-
-           // Container(
-           //
-           //     height: 50,
-           //     margin: const EdgeInsets.only(left: 50,right: 50),
-           //     child: ElevatedButton.icon(
-           //         onPressed: (){ },
-           //
-           //         style: ElevatedButton.styleFrom(
-           //           backgroundColor: Colors.white,
-           //           elevation: 20,
-           //         ),
-           //         icon: Icon(Icons.accessibility,color: _color,size: 30,),
-           //         label: Text("Healthy Tips" ,style: TextStyle(fontSize: 20,color: _color),)))
 
 
          ],

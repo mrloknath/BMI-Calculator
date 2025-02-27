@@ -1,4 +1,6 @@
+import 'package:bmi_calculte/provider/provider_male_female.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class MaleFemale extends StatefulWidget{
   const MaleFemale({super.key,required this.iconText,required this.buttonBackColor});
@@ -6,11 +8,13 @@ class MaleFemale extends StatefulWidget{
   final Color buttonBackColor;
   @override
   State<StatefulWidget> createState() => _MaleFemale();
+
 }
 
 class _MaleFemale  extends State<MaleFemale>{
   Color maleButtonBackground=Colors.white,femaleButtonBackground=Colors.white;
   Color maleIconText=Colors.green,femaleIconText=Colors.green;
+
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +29,9 @@ class _MaleFemale  extends State<MaleFemale>{
           ElevatedButton.icon(
               onPressed: (){
                 setState(() {
+                  // call provider class
+                  context.read<ProviderMaleFemale>().changeMaleFemale("man");
+
                   maleIconText=Colors.white;
                   femaleIconText=widget.buttonBackColor;
                   maleButtonBackground=widget.buttonBackColor;
@@ -38,6 +45,7 @@ class _MaleFemale  extends State<MaleFemale>{
           ElevatedButton.icon(
               onPressed: (){
                 setState(() {
+                  context.read<ProviderMaleFemale>().changeMaleFemale("women");
                   femaleIconText=Colors.white;
                   maleIconText=widget.buttonBackColor;
                   femaleButtonBackground=widget.buttonBackColor;
@@ -52,3 +60,5 @@ class _MaleFemale  extends State<MaleFemale>{
     );
   }
 }
+
+
