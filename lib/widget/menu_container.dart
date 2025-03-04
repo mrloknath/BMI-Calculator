@@ -1,4 +1,4 @@
-import 'package:bmi_calculte/screens/menu_container_screen.dart';
+import 'package:zen_health/screens/menu_container_screen.dart';
 import 'package:flutter/material.dart';
 
 class MenuContainer extends StatelessWidget {

@@ -1,4 +1,4 @@
-import 'package:bmi_calculte/screens/result.dart';
+import 'package:zen_health/screens/result.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../provider/provider_height.dart';

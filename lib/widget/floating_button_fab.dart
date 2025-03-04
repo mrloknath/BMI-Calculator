@@ -1,6 +1,6 @@
 import 'package:animated_expandable_fab/animated_expandable_fab.dart';
-import 'package:bmi_calculte/health_tips/muscle_strength_exercise.dart';
-import 'package:bmi_calculte/health_tips/yoga.dart';
+import 'package:zen_health/health_tips/muscle_strength_exercise.dart';
+import 'package:zen_health/health_tips/yoga.dart';
 import 'package:flutter/material.dart';
 import '../health_tips/food.dart';
 

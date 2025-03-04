@@ -1,5 +1,5 @@
-import 'package:bmi_calculte/information/muscle_trength_exercise_information.dart';
-import 'package:bmi_calculte/widget/menu_container.dart';
+import 'package:zen_health/information/muscle_trength_exercise_information.dart';
+import 'package:zen_health/widget/menu_container.dart';
 import 'package:flutter/material.dart';
 
 class MuscleStrengthExercise extends StatelessWidget {

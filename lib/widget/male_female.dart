@@ -1,4 +1,4 @@
-import 'package:bmi_calculte/provider/provider_male_female.dart';
+import 'package:zen_health/provider/provider_male_female.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

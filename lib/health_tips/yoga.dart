@@ -1,4 +1,4 @@
-import 'package:bmi_calculte/widget/menu_container.dart';
+import 'package:zen_health/widget/menu_container.dart';
 import 'package:flutter/material.dart';
 
 import '../information/yoga_information.dart';

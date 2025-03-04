@@ -1,5 +1,5 @@
-import 'package:bmi_calculte/provider/provider_age.dart';
-import 'package:bmi_calculte/provider/provider_height.dart';
+import 'package:zen_health/provider/provider_age.dart';
+import 'package:zen_health/provider/provider_height.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../provider/provider_male_female.dart';
