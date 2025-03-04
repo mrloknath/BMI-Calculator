@@ -1,9 +1,9 @@
-import 'package:bmi_calculte/provider/provider_age.dart';
-import 'package:bmi_calculte/provider/provider_height.dart';
-import 'package:bmi_calculte/provider/provider_male_female.dart';
-import 'package:bmi_calculte/provider/provider_weight.dart';
-import 'package:bmi_calculte/screens/splash_screen.dart';
-import 'package:bmi_calculte/widget/mobile.dart';
+import 'package:zen_health/provider/provider_age.dart';
+import 'package:zen_health/provider/provider_height.dart';
+import 'package:zen_health/provider/provider_male_female.dart';
+import 'package:zen_health/provider/provider_weight.dart';
+import 'package:zen_health/screens/splash_screen.dart';
+import 'package:zen_health/widget/mobile.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
