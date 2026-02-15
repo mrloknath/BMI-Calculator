@@ -35,101 +35,103 @@ class _HomeScreen extends State<HomeScreen>{
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return SafeArea(
+      child: Scaffold(
 
-      body: Container(
-        height: double.infinity,
-        width: double.infinity,
-        decoration: const BoxDecoration(
-          //color: Colors.green.shade100,
-          gradient: LinearGradient(
-              colors: [Colors.yellowAccent,Colors.lightGreenAccent],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-          )
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: <Widget>[
-            Container(
-              width: double.infinity,
-              margin: const EdgeInsets.only(left: 10.0,right: 10.0),
-              padding: const EdgeInsets.all(10),
-              decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),color: Colors.transparent.withAlpha(10)),
-              child: Column(
-                //mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text("Welcome to Healthy Tips",style: TextStyle(fontSize:15,color: iconText,)),
-                  Text("First calculate your BMI",style: TextStyle(fontSize:20,color: iconText,)),
-                ],
+        body: Container(
+          height: double.infinity,
+          width: double.infinity,
+          decoration: const BoxDecoration(
+            //color: Colors.green.shade100,
+            gradient: LinearGradient(
+                colors: [Colors.yellowAccent,Colors.lightGreenAccent],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+            )
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: <Widget>[
+              Container(
+                width: double.infinity,
+                margin: const EdgeInsets.only(left: 10.0,right: 10.0),
+                padding: const EdgeInsets.all(10),
+                decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),color: Colors.transparent.withAlpha(10)),
+                child: Column(
+                  //mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text("Welcome to Healthy Tips",style: TextStyle(fontSize:15,color: iconText,)),
+                    Text("First calculate your BMI",style: TextStyle(fontSize:20,color: iconText,)),
+                  ],
+                ),
               ),
-            ),
 
 
-            const MaleFemale(iconText: Colors.green,buttonBackColor: Colors.lightGreen,),
+              const MaleFemale(iconText: Colors.green,buttonBackColor: Colors.lightGreen,),
 
 
-            Container(
-              width: double.infinity,
-              height: 450,
-              margin: const EdgeInsets.only(left: 10.0,right: 10.0),
-              padding: const EdgeInsets.all(10),
-              decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),color: Colors.transparent.withAlpha(10)),
-              child: const Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: <Widget>[
-                  Height(min: 0, max: 300),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Weight(min: 0,max: 200,),
-                      Age(min: 0,max: 100,)
-                    ],
-                  )
-                ],
+              Container(
+                width: double.infinity,
+                height: 450,
+                margin: const EdgeInsets.only(left: 10.0,right: 10.0),
+                padding: const EdgeInsets.all(10),
+                decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),color: Colors.transparent.withAlpha(10)),
+                child: const Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: <Widget>[
+                    Height(min: 0, max: 300),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Weight(min: 0,max: 200,),
+                        Age(min: 0,max: 100,)
+                      ],
+                    )
+                  ],
+                ),
               ),
-            ),
 
 
 
 
-            Container(
-              height: 50,
-              margin: const EdgeInsets.only(left: 50,right: 50),
-              child: ElevatedButton.icon(
-                  onPressed: <Widget>(){
-                    Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => BMIResult(bmi: bmiCalculate()))
-                    );
-                  },
+              Container(
+                height: 50,
+                margin: const EdgeInsets.only(left: 50,right: 50),
+                child: ElevatedButton.icon(
+                    onPressed: <Widget>(){
+                      Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => BMIResult(bmi: bmiCalculate()))
+                      );
+                    },
 
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.white,
-                      shadowColor: Colors.lightGreen,
-                      elevation: 20,
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.white,
+                        shadowColor: Colors.lightGreen,
+                        elevation: 20,
 
-                  ),
-                  icon: Icon(Icons.verified,color: iconText,),
-                  label: Text("Check B.M.I.",style: TextStyle(fontSize:25,color: iconText,))),
-            ),
-          ],
+                    ),
+                    icon: Icon(Icons.verified,color: iconText,),
+                    label: Text("Check B.M.I.",style: TextStyle(fontSize:25,color: iconText,))),
+              ),
+            ],
+          ),
         ),
-      ),
 
 
 
 
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (context) => const HomeScreen()),
-          );
-        },
-        backgroundColor: Colors.white,
-        tooltip: 'Reset',
-        mini: true,
-        child: Icon(Icons.refresh,color: iconText,),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Navigator.of(context).pushReplacement(
+              MaterialPageRoute(builder: (context) => const HomeScreen()),
+            );
+          },
+          backgroundColor: Colors.white,
+          tooltip: 'Reset',
+          mini: true,
+          child: Icon(Icons.refresh,color: iconText,),
+        ),
       ),
     );
   }

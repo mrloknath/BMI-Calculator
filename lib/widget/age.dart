@@ -26,7 +26,7 @@ class Age extends StatelessWidget{
               color: Colors.white,
             ),
           ),
-          Text("${context.watch<ProviderAge>().age} kg",
+          Text("${context.watch<ProviderAge>().age} Year",
             style: const TextStyle(
               fontSize: 25,
               fontWeight: FontWeight.bold,

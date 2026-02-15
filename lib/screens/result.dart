@@ -1,3 +1,4 @@
+import 'package:zen_health/constants/image_constants.dart';
 import 'package:zen_health/provider/provider_age.dart';
 import 'package:zen_health/provider/provider_height.dart';
 import 'package:flutter/material.dart';
@@ -37,74 +38,95 @@ class BMIResult extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     getBMICategory(bmi, data);
-   return  Scaffold(
-     backgroundColor:_color.withAlpha(100),
-     appBar: AppBar(
-       backgroundColor: Colors.transparent,
-       centerTitle: true,
-       title: const Text("Result"),
-     ),
-     body: Center(
-       child: Column(
-         mainAxisAlignment: MainAxisAlignment.spaceAround,
-         children: [
-
-           Flexible(
-             flex: 3,
-             child: CircleAvatar(
-               backgroundColor: _color,
-               minRadius: 150,
-               child: Container(
-                 width: double.infinity,
-                   height: double.infinity,
-                   decoration: BoxDecoration(
-                     shape: BoxShape.circle,
-                     gradient: RadialGradient(
-                       colors: [ Colors.white,_color],
-                       center: Alignment.center, // Centered gradient
-                       radius: 0.6, // Controls spread of the gradient
-                     ),
-                   ),
-                   child: Center(child: Text("  ${bmi.toStringAsFixed(2)} ",style: TextStyle(fontSize: 50,color: _color),))),
-             ),
-           ),
-
-           Flexible(
-             flex: 4,
-               child: Consumer<ProviderMaleFemale>(
-                   builder: (context,value,child){
-                   return Image.asset("assets/${context.read<ProviderMaleFemale>().maleFemale}/${context.read<ProviderMaleFemale>().maleFemale}_$data.png");
-                    }
-                    )
-           ),
-
-           Flexible(
-             flex: 2,
-             child: Container(
-                 padding: const EdgeInsets.all(20),
-                 margin: const EdgeInsets.only(left: 50,right: 50),
-                 decoration: BoxDecoration(//color: Colors.transparent.withAlpha(20),
-                     gradient: LinearGradient(
-                       colors: [Colors.yellowAccent.shade200,_color],
-                       begin: Alignment.topLeft,
-                       end: Alignment.bottomRight,
-                     ),
-                     borderRadius: BorderRadius.circular(20)),
-                 child: Text("B.M.I. : ${bmi.toStringAsFixed(2)}\nAge : ${context.read<ProviderAge>().age} \nHeight : ${context.read<ProviderHeight>().height}\nWeight : ${context.read<ProviderWeight>().weight}\nHealth : $data ",
-                 style: const TextStyle(color: Colors.white,fontSize: 15,fontWeight: FontWeight.bold),
-                 textAlign: TextAlign.center,
-                 )),
-           ),
-
-
-
-         ],
+   return  SafeArea(
+     child: Scaffold(
+       backgroundColor:_color.withAlpha(100),
+       appBar: AppBar(
+         backgroundColor: Colors.transparent,
+         // centerTitle: true,
+         title: const Text("Result"),
        ),
+       body: Center(
+         child: Column(
+           mainAxisAlignment: MainAxisAlignment.spaceAround,
+           children: [
+
+             Flexible(
+               flex: 3,
+               child: CircleAvatar(
+                 backgroundColor: _color,
+                 minRadius: 150,
+                 child: Container(
+                   width: double.infinity,
+                     height: double.infinity,
+                     decoration: BoxDecoration(
+                       shape: BoxShape.circle,
+                       gradient: RadialGradient(
+                         colors: [ Colors.white,_color],
+                         center: Alignment.center, // Centered gradient
+                         radius: 0.6, // Controls spread of the gradient
+                       ),
+                     ),
+                     child: Center(child: Text("  ${bmi.toStringAsFixed(2)} ",style: TextStyle(fontSize: 50,color: _color),))),
+               ),
+             ),
+
+             Flexible(
+               flex: 4,
+                 child: Consumer<ProviderMaleFemale>(
+                     builder: (context,value,child){
+                     // return Image.asset("assets/${context.read<ProviderMaleFemale>().maleFemale}/${context.read<ProviderMaleFemale>().maleFemale}_$data.png");
+                     return Image.network(
+                         "${ImageConstants.imageBaseURL}assets/${context.read<ProviderMaleFemale>().maleFemale}/${context.read<ProviderMaleFemale>().maleFemale}_$data.png",
+                         loadingBuilder: (context, child, loadingProgress) {
+                       if (loadingProgress == null) {
+                         return child; // image loaded
+                       }
+                       return const Center(
+                         child: CircularProgressIndicator(
+                           color: Colors.green,
+                         ),
+                       );
+                     },
+                       errorBuilder: (context, error, stackTrace) {
+                       return const Icon(
+                       Icons.image_outlined,
+                       size: 40,
+                       );
+                       },
+                     );
+                      }
+                      )
+             ),
+
+             Flexible(
+               flex: 2,
+               child: Container(
+                   padding: const EdgeInsets.all(20),
+                   margin: const EdgeInsets.only(left: 50,right: 50),
+                   decoration: BoxDecoration(//color: Colors.transparent.withAlpha(20),
+                       gradient: LinearGradient(
+                         colors: [Colors.yellowAccent.shade200,_color],
+                         begin: Alignment.topLeft,
+                         end: Alignment.bottomRight,
+                       ),
+                       borderRadius: BorderRadius.circular(20)),
+                   child: Text("B.M.I. : ${bmi.toStringAsFixed(2)}\nAge : ${context.read<ProviderAge>().age} \nHeight : ${context.read<ProviderHeight>().height}\nWeight : ${context.read<ProviderWeight>().weight}\nHealth : $data ",
+                   style: const TextStyle(color: Colors.white,fontSize: 15,fontWeight: FontWeight.bold),
+                   textAlign: TextAlign.center,
+                   )),
+             ),
+
+
+
+           ],
+         ),
+       ),
+
+
+
+       floatingActionButton: FloatingButtonFab(color: _color,bmi: bmi,),
      ),
-
-
-
-     floatingActionButton: FloatingButtonFab(color: _color,bmi: bmi,),
    );
   }
 }
