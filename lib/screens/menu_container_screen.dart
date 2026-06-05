@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../constants/image_constants.dart';
+import 'package:zen_health/constants/color_constants.dart';
 
 class MenuContainerScreen extends StatelessWidget {
   final String path;
@@ -10,22 +11,22 @@ class MenuContainerScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: Colors.white,
-        appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          centerTitle: true,
-          title: Text(title),
-          leading: IconButton(
-            icon: const Icon(Icons.arrow_back),
-            onPressed: () {
-              Navigator.pop(context); // Goes back to the previous screen
-            },
-          ),
-
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        centerTitle: true,
+        title: Text(title),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context); // Goes back to the previous screen
+          },
         ),
-        body: SingleChildScrollView(
+
+      ),
+      body: SafeArea(
+        child: SingleChildScrollView(
           child: Column(
             //mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
@@ -36,7 +37,7 @@ class MenuContainerScreen extends StatelessWidget {
               }
               return const Center(
                 child: CircularProgressIndicator(
-                  color: Colors.green,
+                  color: AppColors.lightGreen,
                 ),
               );
             },
@@ -47,18 +48,21 @@ class MenuContainerScreen extends StatelessWidget {
               );
             },
             "${ImageConstants.imageBaseURL}$path"))),
-              const Center(child: CircleAvatar(radius: 20,backgroundColor: Colors.green,)),
+              const Center(child: CircleAvatar(radius: 20,backgroundColor: AppColors.lightGreen,)),
+              const SizedBox(height: 10),
               Container(
                 padding: const EdgeInsets.all(20),
                 margin: const EdgeInsets.only(left: 25,top: 0,right: 25,bottom: 0),
-                decoration: BoxDecoration(//color: Colors.transparent.withAlpha(20),
+                decoration: BoxDecoration(
                     gradient: const LinearGradient(
-                      colors: [Colors.yellowAccent,Colors.lightGreen],
+                      colors: [AppColors.bgLightGreen, AppColors.bgGreenAccent],
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
                     ),
-                    borderRadius: BorderRadius.circular(20)),
-                child: Text(data, style: const TextStyle(color: Colors.green,fontSize: 15,fontWeight: FontWeight.bold),),)
+                    borderRadius: BorderRadius.circular(20),
+                    border: Border.all(color: AppColors.lightGreen.withOpacity(0.3), width: 1),
+                ),
+                child: Text(data, style: const TextStyle(color: AppColors.textDarkGreen,fontSize: 15,fontWeight: FontWeight.bold),),)
             ],
           ),
         ),

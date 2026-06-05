@@ -2,6 +2,7 @@ import 'package:zen_health/screens/menu_container_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../constants/image_constants.dart';
+import 'package:zen_health/constants/color_constants.dart';
 
 class MenuContainer extends StatelessWidget {
   final String title;
@@ -45,7 +46,7 @@ class MenuContainer extends StatelessWidget {
                         }
                         return const Center(
                           child: CircularProgressIndicator(
-                            color: Colors.green,
+                            color: AppColors.lightGreen,
                           ),
                         );
                       },
@@ -62,7 +63,7 @@ class MenuContainer extends StatelessWidget {
             child: Text(title,style:const TextStyle(
               fontSize: 15,
               fontWeight: FontWeight.bold,
-              color: Colors.green,
+              color: AppColors.textDarkGreen,
               //backgroundColor: Colors.grey.shade50,// Ensures text visibility
             ),
               textAlign: TextAlign.center,),

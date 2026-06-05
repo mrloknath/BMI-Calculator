@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:animated_expandable_fab/animated_expandable_fab.dart';
 import 'package:zen_health/health_tips/muscle_strength_exercise.dart';
+import 'package:zen_health/constants/color_constants.dart';
 import 'package:zen_health/health_tips/yoga.dart';
 import 'package:flutter/material.dart';
 import '../constants/image_constants.dart';
@@ -26,11 +27,11 @@ class _FloatingButtonFabState extends State<FloatingButtonFab> {
     return ExpandableFab(
       closeBackgroundColor: widget.color,
       closeElevation: 10,
-      closeShadowColor: Colors.green,
+      closeShadowColor: AppColors.lightGreen,
       distance: 75.0,
       // openIcon: Icon(Icons.accessibility,color:widget.color),
-      openIcon: changingIcon(
-        icons: [Icons.self_improvement, Icons.sports_gymnastics, Icons.restaurant],
+      openIcon: ChangingIcon(
+        icons: const [Icons.self_improvement, Icons.sports_gymnastics, Icons.restaurant],
         color: widget.color,
         size: 32,
       ),
@@ -58,7 +59,7 @@ class _FloatingButtonFabState extends State<FloatingButtonFab> {
                 }
                 return const Center(
                   child: CircularProgressIndicator(
-                    color: Colors.green,
+                    color: AppColors.lightGreen,
                   ),
                 );
               },
@@ -93,7 +94,9 @@ class _FloatingButtonFabState extends State<FloatingButtonFab> {
               return child; // image loaded
             }
             return const Center(
-              child: CircularProgressIndicator(),
+              child: CircularProgressIndicator(
+                color: AppColors.lightGreen,
+              ),
             );
           },
               errorBuilder: (context, error, stackTrace) {
@@ -132,7 +135,7 @@ class _FloatingButtonFabState extends State<FloatingButtonFab> {
                   }
                   return const Center(
                     child: CircularProgressIndicator(
-                      color: Colors.green,
+                      color: AppColors.lightGreen,
                     ),
                   );
                 },
@@ -154,35 +157,54 @@ class _FloatingButtonFabState extends State<FloatingButtonFab> {
       ],
     );
   }
+}
 
+class ChangingIcon extends StatefulWidget {
+  final List<IconData> icons;
+  final Color color;
+  final Duration duration;
+  final double size;
 
+  const ChangingIcon({
+    super.key,
+    required this.icons,
+    required this.color,
+    this.duration = const Duration(seconds: 1),
+    this.size = 24,
+  });
 
+  @override
+  State<ChangingIcon> createState() => _ChangingIconState();
+}
 
-  Widget changingIcon({
-    required List<IconData> icons,
-    required Color color,
-    Duration duration = const Duration(seconds: 1),
-    double size = 24,
-  }) {
-    final index = ValueNotifier(0);
+class _ChangingIconState extends State<ChangingIcon> {
+  int _currentIndex = 0;
+  Timer? _timer;
 
-    Timer.periodic(duration, (t) {
-      if (!index.hasListeners) {
-        t.cancel(); // ✅ stop when widget is gone
-        return;
+  @override
+  void initState() {
+    super.initState();
+    _timer = Timer.periodic(widget.duration, (timer) {
+      if (mounted) {
+        setState(() {
+          _currentIndex = (_currentIndex + 1) % widget.icons.length;
+        });
       }
-      index.value = (index.value + 1) % icons.length;
     });
-
-    return ValueListenableBuilder<int>(
-      valueListenable: index,
-      builder: (_, i, __) => Icon(
-        icons[i],
-        color: color,
-        size: size,
-      ),
-    );
   }
 
+  @override
+  void dispose() {
+    _timer?.cancel();
+    super.dispose();
+  }
 
+  @override
+  Widget build(BuildContext context) {
+    return Icon(
+      widget.icons[_currentIndex],
+      color: widget.color,
+      size: widget.size,
+    );
+  }
 }
