@@ -4,6 +4,8 @@ import 'package:provider/provider.dart';
 import 'package:zen_health/constants/color_constants.dart';
 import '../provider/provider_height.dart';
 import '../provider/provider_weight.dart';
+import '../provider/provider_age.dart';
+import '../provider/provider_male_female.dart';
 import '../widget/age.dart';
 import '../widget/height.dart';
 import '../widget/male_female.dart';
@@ -153,68 +155,112 @@ class _HomeScreen extends State<HomeScreen>{
                 ),
               ),
 
-              // Check B.M.I. Button
-              Container(
-                height: 56,
-                width: double.infinity,
-                margin: const EdgeInsets.symmetric(horizontal: 40),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(18),
-                  gradient: const LinearGradient(
-                    colors: [primaryColor, darkTeal],
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                  ),
-                  boxShadow: [
-                    BoxShadow(
-                      color: primaryColor.withOpacity(0.3),
-                      blurRadius: 12,
-                      offset: const Offset(0, 6),
+              // Reset and Check BMI Buttons
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                child: Row(
+                  children: [
+                    // Reset Button
+                    Expanded(
+                      child: Container(
+                        height: 56,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(18),
+                          gradient: const LinearGradient(
+                            colors: [AppColors.textGrey, AppColors.textSlate],
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                              color: AppColors.textSlate.withOpacity(0.3),
+                              blurRadius: 12,
+                              offset: const Offset(0, 6),
+                            ),
+                          ],
+                        ),
+                        child: ElevatedButton.icon(
+                          onPressed: () {
+                            context.read<ProviderHeight>().changeHeight(180);
+                            context.read<ProviderWeight>().changeWeight(65);
+                            context.read<ProviderAge>().changeAge(50);
+                            context.read<ProviderMaleFemale>().changeMaleFemale("man");
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.transparent,
+                            shadowColor: Colors.transparent,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(18),
+                            ),
+                          ),
+                          icon: const Icon(Icons.refresh, color: Colors.white, size: 24),
+                          label: const Text(
+                            "Reset",
+                            style: TextStyle(
+                              fontSize: 18,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              letterSpacing: 1.2,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 16),
+                    // Check BMI Button
+                    Expanded(
+                      child: Container(
+                        height: 56,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(18),
+                          gradient: const LinearGradient(
+                            colors: [primaryColor, darkTeal],
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                              color: primaryColor.withOpacity(0.3),
+                              blurRadius: 12,
+                              offset: const Offset(0, 6),
+                            ),
+                          ],
+                        ),
+                        child: ElevatedButton.icon(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => BMIResult(bmi: bmiCalculate()),
+                              ),
+                            );
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.transparent,
+                            shadowColor: Colors.transparent,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(18),
+                            ),
+                          ),
+                          icon: const Icon(Icons.analytics_outlined, color: Colors.white, size: 24),
+                          label: const Text(
+                            "Check BMI",
+                            style: TextStyle(
+                              fontSize: 18,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              letterSpacing: 1.2,
+                            ),
+                          ),
+                        ),
+                      ),
                     ),
                   ],
-                ),
-                child: ElevatedButton.icon(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => BMIResult(bmi: bmiCalculate()),
-                      ),
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.transparent,
-                    shadowColor: Colors.transparent,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(18),
-                    ),
-                  ),
-                  icon: const Icon(Icons.analytics_outlined, color: Colors.white, size: 24),
-                  label: const Text(
-                    "Check B.M.I.",
-                    style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      letterSpacing: 1.2,
-                    ),
-                  ),
                 ),
               ),
             ],
           ),
         ),
-      ),
-      floatingActionButton: FloatingActionButton.small(
-        onPressed: () {
-          Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (context) => const HomeScreen()),
-          );
-        },
-        backgroundColor: Colors.white,
-        tooltip: 'Reset',
-        elevation: 3,
-        child: const Icon(Icons.refresh, color: primaryColor),
       ),
     );
   }
