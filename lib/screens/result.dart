@@ -1,4 +1,5 @@
 import 'package:zen_health/constants/image_constants.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:zen_health/provider/provider_age.dart';
 import 'package:zen_health/provider/provider_height.dart';
 import 'package:flutter/material.dart';
@@ -162,25 +163,18 @@ class BMIResult extends StatelessWidget {
                 flex: 4,
                 child: Consumer<ProviderMaleFemale>(
                   builder: (context, value, child) {
-                    return Image.network(
-                      "${ImageConstants.imageBaseURL}assets/$gender/${gender}_${info.category}.png",
-                      loadingBuilder: (context, child, loadingProgress) {
-                        if (loadingProgress == null) {
-                          return child;
-                        }
-                        return const Center(
-                          child: CircularProgressIndicator(
-                            color: AppColors.lightGreen,
-                          ),
-                        );
-                      },
-                      errorBuilder: (context, error, stackTrace) {
-                        return Icon(
-                          Icons.accessibility_new_rounded,
-                          size: 100,
-                          color: info.color,
-                        );
-                      },
+                    return CachedNetworkImage(
+                      imageUrl: "${ImageConstants.imageBaseURL}assets/$gender/${gender}_${info.category}.png",
+                      placeholder: (context, url) => const Center(
+                        child: CircularProgressIndicator(
+                          color: AppColors.lightGreen,
+                        ),
+                      ),
+                      errorWidget: (context, url, error) => Icon(
+                        Icons.accessibility_new_rounded,
+                        size: 100,
+                        color: info.color,
+                      ),
                     );
                   },
                 ),

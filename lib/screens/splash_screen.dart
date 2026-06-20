@@ -2,6 +2,7 @@ import 'package:zen_health/screens/home.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:zen_health/constants/color_constants.dart';
+import 'package:zen_health/constants/image_constants.dart';
 
 class SplashScreen extends StatefulWidget{
   const SplashScreen({super.key});
@@ -17,6 +18,11 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
+    Future.delayed(Duration.zero, () {
+      if (mounted) {
+        ImageConstants.precacheAllImages(context);
+      }
+    });
     Future.delayed(const Duration(milliseconds: 100), () {
       if (mounted) {
         setState(() {

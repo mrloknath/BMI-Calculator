@@ -5,6 +5,7 @@ import 'package:zen_health/health_tips/muscle_strength_exercise.dart';
 import 'package:zen_health/constants/color_constants.dart';
 import 'package:zen_health/health_tips/yoga.dart';
 import 'package:flutter/material.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import '../constants/image_constants.dart';
 import '../health_tips/food.dart';
 
@@ -50,25 +51,19 @@ class _FloatingButtonFabState extends State<FloatingButtonFab> {
               },
             child: Hero(tag: "food",
             // child: Image.asset("assets/food/food.png", width: 30,height:30)),
-            child: Image.network("${ImageConstants.imageBaseURL}assets/food/food.png",
-                width: 30,
-                height:30,
-              loadingBuilder: (context, child, loadingProgress) {
-                if (loadingProgress == null) {
-                  return child; // image loaded
-                }
-                return const Center(
-                  child: CircularProgressIndicator(
-                    color: AppColors.lightGreen,
-                  ),
-                );
-              },
-              errorBuilder: (context, error, stackTrace) {
-                return const Icon(
-                  Icons.image_outlined,
-                  size: 40,
-                );
-              },
+            child: CachedNetworkImage(
+              imageUrl: "${ImageConstants.imageBaseURL}assets/food/food.png",
+              width: 30,
+              height: 30,
+              placeholder: (context, url) => const Center(
+                child: CircularProgressIndicator(
+                  color: AppColors.lightGreen,
+                ),
+              ),
+              errorWidget: (context, url, error) => const Icon(
+                Icons.image_outlined,
+                size: 40,
+              ),
             )),
           ),),
          // text: Text("Food"),
@@ -88,24 +83,20 @@ class _FloatingButtonFabState extends State<FloatingButtonFab> {
           );
           },
           child: Hero(tag: "mse",
-          child:Image.network(
-              loadingBuilder: (context, child, loadingProgress) {
-            if (loadingProgress == null) {
-              return child; // image loaded
-            }
-            return const Center(
+          child: CachedNetworkImage(
+            imageUrl: "${ImageConstants.imageBaseURL}assets/muscle_strength_exercise/muscle_strength_exercise.png",
+            width: 30,
+            height: 30,
+            placeholder: (context, url) => const Center(
               child: CircularProgressIndicator(
                 color: AppColors.lightGreen,
               ),
-            );
-          },
-              errorBuilder: (context, error, stackTrace) {
-                return const Icon(
-                  Icons.error,
-                  size: 40,
-                );
-              },
-              "${ImageConstants.imageBaseURL}assets/muscle_strength_exercise/muscle_strength_exercise.png", width: 30,height:30)))),
+            ),
+            errorWidget: (context, url, error) => const Icon(
+              Icons.error,
+              size: 40,
+            ),
+          )))),
          // text: Text("Food"),
           onPressed: (){
             // Navigator.push(context,
@@ -128,24 +119,20 @@ class _FloatingButtonFabState extends State<FloatingButtonFab> {
             },
             child: Hero(tag: "yoga",
             // child: Image.asset("assets/yoga/yoga.png", width: 30,height:30),))),
-            child: Image.network(
-                loadingBuilder: (context, child, loadingProgress) {
-                  if (loadingProgress == null) {
-                    return child; // image loaded
-                  }
-                  return const Center(
-                    child: CircularProgressIndicator(
-                      color: AppColors.lightGreen,
-                    ),
-                  );
-                },
-                errorBuilder: (context, error, stackTrace) {
-                  return const Icon(
-                    Icons.image_outlined,
-                    size: 40,
-                  );
-                },
-                "${ImageConstants.imageBaseURL}assets/yoga/yoga.png", width: 30,height:30),))),
+            child: CachedNetworkImage(
+              imageUrl: "${ImageConstants.imageBaseURL}assets/yoga/yoga.png",
+              width: 30,
+              height: 30,
+              placeholder: (context, url) => const Center(
+                child: CircularProgressIndicator(
+                  color: AppColors.lightGreen,
+                ),
+              ),
+              errorWidget: (context, url, error) => const Icon(
+                Icons.image_outlined,
+                size: 40,
+              ),
+            ),))),
          // text: Text("Food"),
           onPressed: (){
             // Navigator.push(context,
